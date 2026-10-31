@@ -71,6 +71,17 @@ Apple has no API for iCloud Notes. Instead, Atelier syncs a folder of notes that
 
 Read-only. Reminders with due dates already appear in Calendar, so Atelier adds no events of its own and each project shows up once.
 
+## Organizing
+
+- **Tags with colors** on projects, filter Projects by tag, and manage them in Settings → Tags.
+- **Favorite projects and pinned clients** sort to the top.
+- **Select several** projects or clients for bulk actions: complete, set status, mark paid, tag, favorite, archive, pin or remove.
+- **Recently viewed** records show in Search before you type.
+- **Saved invoice items** of your own, next to the Square item library; save any line from the composer with a swipe.
+- **Quick Capture:** press and hold the tab bar from anywhere to add a project, client, invoice, note, email, expense or income.
+- **Monthly summary:** income, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
+- Context menus on invoices and transactions, and a loading skeleton for mail.
+
 ## Settings
 
 - **Business profile:** logo, name, email, phone, website, address and opening hours.
