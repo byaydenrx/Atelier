@@ -71,6 +71,16 @@ Apple has no API for iCloud Notes. Instead, Atelier syncs a folder of notes that
 
 Read-only. Reminders with due dates already appear in Calendar, so Atelier adds no events of its own and each project shows up once.
 
+## Settings
+
+- **Business profile:** logo, name, email, phone, website, address and opening hours.
+- **Formats:** date style (Oct 31, 31 Oct, 10/31, 31/10), 12- or 24-hour time, and the first day of the week, used everywhere from Finance to the calendar.
+- **Defaults:** status, price and due date for new projects; due date, deposit, tips and payment terms for new invoices.
+- **Notifications:** quiet hours (scheduled reminders move to when they end; mail and payment alerts arrive silently), quiet outside business hours, and notifications grouped by kind.
+- **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay; amounts hidden until Face ID; a blurred app switcher; amounts hidden on widgets.
+- **App icon:** Black Glass, White, Graphite or Outline.
+- **What's New:** the changelog, inside Settings.
+
 ## Widget
 
 One configurable "Atelier" widget in small, medium and large sizes, which shows one of the following:
