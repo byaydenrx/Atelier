@@ -14,21 +14,21 @@ Atelier brings that together. Square stays the source of truth for clients and m
 
 ## What's in it
 
-Today · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the sections on Today.
+Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs, or swipe sideways on any empty space.
 
 | Tab | What it shows |
 | --- | --- |
-| **Today** | A dashboard of widgets you arrange yourself (see below) |
+| **Dashboard** | Widgets you arrange yourself (see below) |
 | **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Waiting, Ready, Completed) and its invoice's status |
 | **Clients** | Square customers, their businesses and Instagram handles, active and past projects, total owed. A **Top** filter ranks clients by what they've paid. Any project can be attached to a client by hand |
 | **Invoices** | Square invoices with status and balance; write a new one without leaving the app |
-| **Finance** | Income and expenses by day, week, month or year, with history and what's still expected. Tap a bar in the chart to see that day's numbers. Square's processing fees are kept apart from expenses, with their own list and total |
+| **Finance** | Income and expenses by day, week, month or year, with history and what's still expected. Tap a bar (or near one) in the chart to see that day's numbers. Square's processing fees are kept apart from expenses, with their own list and total |
 | **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive, delete |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
 
-## Today
+## Dashboard
 
-Today is a grid of widgets, each small (half width) or wide. Hold a widget for its menu, then **Edit Today**: the widgets shake like the Home Screen, and you can drag them into a new order, resize them, remove them, or add more from a gallery. Presets fill Today in one tap: At a Glance, Project Focus, Money Focus, Weekly Review and Minimal.
+The Dashboard is a grid of widgets, each small (half width) or wide. Hold any empty space, or hold a widget and tap **Edit Dashboard**: the widgets jiggle like the Home Screen, and you can drag them into a new order, resize them, remove them, or add more from a gallery. Tap empty space or Done to finish. Presets fill the Dashboard in one tap: At a Glance, Project Focus, Money Focus, Weekly Review and Minimal.
 
 The widgets:
 
@@ -55,7 +55,7 @@ The access token is stored in the iOS Keychain.
 ### Calendar
 
 - **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
-- **Today's events** from the calendars you choose appear on Today. Atelier's own due-date events are left out there, so each deadline shows once.
+- **Today's events** from the calendars you choose appear on the Dashboard. Atelier's own due-date events are left out there, so each deadline shows once.
 
 ### Mail
 
@@ -74,7 +74,7 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Favorite projects and pinned clients** sort to the top.
 - **Select several** projects or clients for bulk actions: complete, set status, mark paid, favorite, archive, pin or remove.
 - **Recently viewed** records show in Search before you type.
-- **Quick Capture:** press and hold the tab bar from anywhere to add a project, client, invoice, email, expense or income.
+- **Quick Capture:** the + button adds a project, client, invoice, email, expense or income.
 - **Monthly summary:** income, processor fees, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
 - Context menus on projects, clients, invoices, transactions and mail, and a loading skeleton for mail.
 
@@ -82,25 +82,25 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 
 - **Automatic backups** run daily, every three days or weekly when you leave the app, and keep the last 7 to 60. They're plain files in the Files app (On My iPhone → Atelier → Backups), so they don't depend on any sync service.
 - **A second copy** of every backup can go to any folder you pick in Files: iCloud Drive, a USB drive, another app. If that folder can't be reached (iCloud signed out, folder moved), the backup still saves on the phone and Settings says why.
-- **Export everything** to one file: all records plus settings, the Today layout, mail templates and the logo. Mail passwords and the Square token are never included.
+- **Export everything** to one file: all records plus settings, the Dashboard layout, mail templates and the logo. Mail passwords and the Square token are never included.
 - **Import with a preview.** Before anything is added, Atelier shows what's new and what's already there. Duplicates are found by id and by content (the same client, the same project on the same day, the same payment), and existing records always win, so an import can't undo later changes. A backup of the current data is saved first.
-- **Sync & Backups** shows each connection's last good sync and any error, with a retry button; Today shows a one-line warning when something stops syncing.
+- **Sync & Backups** shows each connection's last good sync and any error, with a retry button; the Dashboard shows a one-line warning when something stops syncing.
 - **Updates can't cost data:** before a new version opens the database, a copy of it is put aside, and the database opens through a versioned schema with a migration plan for future changes.
 - **Nothing important disappears without a way back:** deletes go to Recently Deleted, erasing everything saves a backup first, and deleting for good (from Recently Deleted or a mail Trash folder) always asks.
 
 ## Safety net
 
 - **Recently Deleted** (Settings → Sync & Backups) keeps deleted projects, clients and transactions for 7 days to a year (30 by default). Restoring brings back their links: a client's businesses and projects, and a project's calendar event.
-- **Shake to undo** the last edit, completion or delete, after a confirmation. Sync changes stay off the undo list.
+- **Undo:** deleting a project, client or transaction, or archiving or deleting an email, shows a small pill with **Undo**. Shaking the iPhone undoes the same thing, or the last edit or completion, after a confirmation. Archived and deleted emails are found again by their Message-ID and moved back. Sync changes stay off the undo list.
 - **Automatic saving:** swipe away an edited project or client and the change is kept; Cancel throws it away. Unsent mail is offered as a draft.
 - **Haptic confirmations** when you complete a project, mark it paid, save, or send an invoice or email.
 
 ## Feedback
 
-**Make Atelier Better**, at the bottom of Settings, collects ideas and bug reports, and the roadmap is built from them. All of it lives in this repository's [Issues](https://github.com/byaydenrx/Atelier/issues).
+**Make Atelier Better**, a page at the bottom of Settings, collects ideas and bug reports, and the roadmap is built from them. All of it lives in this repository's [Issues](https://github.com/byaydenrx/Atelier/issues).
 
 - **Sending:** pick Feature Request, Bug Report or Other, write it, attach up to four screenshots and tap Submit Feedback. Each submission becomes an issue labelled with its category. Words are kept until they're sent, so leaving Settings never loses them.
-- **With or without a GitHub account:** with a GitHub token connected (Settings → Connections → GitHub, kept in the Keychain), feedback is posted from the app. Without one, GitHub's new-issue page opens already filled in, with screenshots copied for pasting.
+- **With or without a GitHub account:** with a GitHub token connected (on the same page, kept in the Keychain), feedback is posted from the app. Without one, GitHub's new-issue page opens already filled in, with screenshots copied for pasting.
 - **Screenshots** are shrunk and committed to a separate `feedback-assets` branch, so the main branch stays documentation only. The form warns that feedback is public, so screenshots should be checked for client names and amounts.
 - **Community Roadmap:** what's In Development, and the Most Requested features ranked by votes. Votes are 👍 reactions on the issue: from the app when GitHub is connected, otherwise on github.com. The list is cached, so it opens offline.
 - **Feedback Inbox:** only shown when the connected token can manage the repository. It filters by New, Planned, In Development or Closed, by category and by search, and sorts by date or votes. Swipe right to plan or start a request, left to finish or decline it. Each request shows its screenshots and comments, and you can change its status or category and reply. Statuses are labels; Done and Won't Do close the issue as completed or not planned.
@@ -112,7 +112,7 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Formats:** date style (Oct 31, 31 Oct, 10/31, 31/10), 12- or 24-hour time, and the first day of the week, used everywhere from Finance to the calendar.
 - **Defaults:** status and due date for new projects (new projects start as Not Started); due date, deposit, tips and payment terms for new invoices.
 - **Notifications:** deadline reminders (day of, day before, two days before), an overdue nudge, a morning summary, a monthly summary, invoice paid or overdue, and new mail, grouped by kind.
-- **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay, behind a blur with a single Unlock button that fades away; an optional blur for the app switcher that fades in as you swipe away; and amounts in widgets hidden while the iPhone is locked.
+- **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay, behind a blur with a single Unlock button that fades away; an optional blur for the app switcher that fades in as you swipe away (otherwise the switcher shows the app as it is); and amounts in widgets hidden while the iPhone is locked.
 - **App icon:** Black (the default), White, and a glass version of each.
 - **What's New:** the changelog, inside Settings.
 
@@ -157,7 +157,7 @@ Black background, white type and monochrome glass by default, from the floating 
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, over 160 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, over 170 checks, run in the Simulator. It covers:
 
 - client matching and de-duplication
 - finance totals, with processor fees kept apart from expenses
@@ -169,10 +169,11 @@ Atelier has a built-in end-to-end self-test, over 160 checks, run in the Simulat
 - attaching projects to clients by hand
 - keeping the sample workspace away from real data and services
 - due dates written to, moved on and removed from a calendar
-- the Today layout: old layouts carrying over, presets, pairing small widgets, moving and resizing
+- the Dashboard layout: old layouts carrying over, presets, pairing small widgets, moving and resizing
 - export and import: settings and records in the file, duplicates found by content, previews that change nothing
 - backup files, retention, sync status and opening the database through the migration plan
 - feedback: issue text and titles, screenshot handling, the github.com fallback, the roadmap's order, votes, statuses and replies
+- undo: deletes coming back with their links, staying off the edit undo list, and archived or deleted mail returning to the inbox
 
 Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, and feedback runs against a small fake GitHub API, so tests never post real issues. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
