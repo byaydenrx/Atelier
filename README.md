@@ -20,9 +20,9 @@ Today · Projects · Clients · Invoices · Finance · Mail · Notes, with Searc
 | --- | --- |
 | **Today** | What's due and overdue, active projects with progress and what's still owed, upcoming calendar events, pinned notes |
 | **Projects** | Every commission with its client, brand, price, what's owed, status (Not Started, In Progress, Waiting, Completed) and its invoice's status |
-| **Clients** | Square customers, their brands and Instagram handles, active and past projects, total owed |
+| **Clients** | Square customers, their brands and Instagram handles, active and past projects, total owed. Any project can be attached to a client by hand |
 | **Invoices** | Square invoices with status and balance; write a new one without leaving the app |
-| **Finance** | Income, expenses and fees by day, week, month or year, with history and what's still expected |
+| **Finance** | Income, expenses and fees by day, week, month or year, with history and what's still expected. Tap a bar in the chart to see that day's income and expenses |
 | **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive |
 | **Notes** | Work notes, synced through a mail account's Notes folder |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
@@ -50,10 +50,10 @@ When the app writes back, it keeps the existing wording and changes only what ch
 
 ### Square: clients, invoices and money
 
-- **Clients come only from Square customers.** Reminders never create clients; a reminder links to a client when its title names one. If the Square customer shows up later, the project links on the next sync. A name entered in Square as `Name @brand` becomes the client plus a brand.
+- **Clients come only from Square customers.** Reminders never create clients; a reminder links to a client when its title names one. If the Square customer shows up later, the project links on the next sync. A project whose reminder doesn't name its client can be attached by hand; the app remembers that spelling so the link survives later syncs. A name entered in Square as `Name @brand` becomes the client plus a brand.
 - **Revenue comes only from Square payments**, minus refunds. Square's processing fees become expenses. Nothing from Reminders is counted as income, so nothing is counted twice. What clients still owe appears separately as *expected*.
 - **"Owes" comes from the invoice.** When a project has a Square invoice, what it owes is that invoice's balance, partial payments included. Projects without an invoice use the amount in their reminder.
-- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, reminders and delivery (email, text or a share link). Send it or save it as a draft. A new invoice can also create its project and reminder in one step.
+- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, reminders and delivery (email, text or a share link). Send it or save it as a draft. A new invoice can also create its project and reminder in one step, with the project's own due date, status, priority, type, brief and notes filled in right there.
 - Invoices created in Square itself after setup also become projects automatically.
 - Re-syncing is idempotent: payments, invoices and clients are matched by their Square IDs, so nothing is duplicated.
 
@@ -106,7 +106,7 @@ Black background, white type and monochrome glass, from the floating tab bar to 
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, about 100 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, over 110 checks, run in the Simulator. It covers:
 
 - the Reminders parser and write-back against real-world entry formats
 - client matching and de-duplication
@@ -116,11 +116,13 @@ Atelier has a built-in end-to-end self-test, about 100 checks, run in the Simula
 - MIME
 - backup round-trips
 - search ranking
+- attaching projects to clients by hand
+- keeping the sample workspace away from real data and services
 - Reminders and Calendar sync against a throwaway list
 
 Mail, archiving and notes sync run against a small fake IMAP/SMTP server written in Python. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
-A demo mode loads an in-memory sample workspace for screenshots, so real data is never touched.
+Sample data (from Settings, or a launch flag for screenshots) opens a separate in-memory workspace that stands in for everything, mail included. While it's open nothing syncs with Square, Reminders or Notes, the widget keeps showing real data, and exiting brings the real workspace back untouched.
 
 ## Status
 
