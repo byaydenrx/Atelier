@@ -138,11 +138,15 @@ All data stays on the phone, apart from what syncs with the user's own Reminders
 
 ## Design
 
-Black background, white type and monochrome glass, from the floating tab bar to the cards, sheets and widget. Color appears only where it carries meaning, such as overdue dates and calendar colors.
+Black background, white type and monochrome glass by default, from the floating tab bar to the cards, sheets and widget. Color appears only where it carries meaning, such as overdue dates, tags and calendar colors.
+
+- **Appearance:** Dark (the original), Light, or follow the system. Every screen is drawn from a few adaptive colors (ink, paper, accent), so both modes stay consistent.
+- **Accent:** Monochrome or one of seven colors, used for selected tabs and chips, main buttons and switches.
+- **Accessibility:** large figures grow with your text size, rows read as one item in VoiceOver with favorite, pinned, starred and unread states announced, and loading animations respect Reduce Motion.
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, nearly 120 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, over 140 checks, run in the Simulator. It covers:
 
 - the Reminders parser and write-back against real-world entry formats
 - client matching and de-duplication
