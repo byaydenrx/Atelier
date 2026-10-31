@@ -1,6 +1,6 @@
 # Atelier
 
-A personal studio app for iPhone, built for one freelance designer's commission business. Atelier keeps projects, clients, Square invoices, money, mail and notes in one place. It stays in sync with the tools the work already lives in: a Reminders list, Square, an IMAP mailbox and Calendar.
+A personal studio app for iPhone, built for one freelance designer's commission business. Atelier keeps projects, clients, Square invoices, money and mail in one place, and puts project due dates on the calendar.
 
 SwiftUI and SwiftData, with a home-screen widget, in a black, monochrome Liquid Glass design.
 
@@ -8,103 +8,79 @@ SwiftUI and SwiftData, with a home-screen widget, in a black, monochrome Liquid 
 
 ## Why it exists
 
-Commission work was spread over four apps. Who ordered what lived in Reminders, payments in Square, conversations in email and pricing notes in Notes. Answering "who still owes me?" meant cross-checking all of them.
+Commission work was spread over several apps: payments in Square, conversations in email, due dates on a list. Answering "who still owes me?" meant cross-checking all of them.
 
-Atelier doesn't replace those apps. It reads and writes them, so each one keeps working on its own and the iPhone has one view across all of them.
+Atelier brings that together. Square stays the source of truth for clients and money, mail stays on the mail server, and due dates go to the calendar you already look at.
 
 ## What's in it
 
-Today · Projects · Clients · Invoices · Finance · Mail · Notes, with Search on the side. You can reorder or hide tabs and the sections on Today.
+Today · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the sections on Today.
 
 | Tab | What it shows |
 | --- | --- |
-| **Today** | What's due and overdue, active projects with progress and what's still owed, upcoming calendar events, pinned notes |
-| **Projects** | Every commission with its client, brand, price, what's owed, status (Not Started, In Progress, Waiting, Completed) and its invoice's status |
-| **Clients** | Square customers, their brands and Instagram handles, active and past projects, total owed. Brands are added and edited right in the client form, websites open with one tap, and any project can be attached to a client by hand |
+| **Today** | What's due and overdue, active projects with progress and what's still owed, upcoming calendar events |
+| **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Waiting, Completed) and its invoice's status |
+| **Clients** | Square customers, their businesses and Instagram handles, active and past projects, total owed. A **Top** filter ranks clients by what they've paid. Any project can be attached to a client by hand |
 | **Invoices** | Square invoices with status and balance; write a new one without leaving the app |
-| **Finance** | Income, expenses and fees by day, week, month or year, with history and what's still expected. Tap a bar in the chart to see that day's income and expenses |
-| **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive |
-| **Notes** | Work notes, synced through a mail account's Notes folder |
+| **Finance** | Income and expenses by day, week, month or year, with history and what's still expected. Tap a bar in the chart to see that day's numbers. Square's processing fees are kept apart from expenses, with their own list and total |
+| **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive, delete |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
 
 ## How it connects
 
-### Reminders: the commission list
-
-Every reminder in one chosen list is one project, and every project is one reminder. Edits go both ways.
-
-Reminders are written the way they'd be typed by hand:
-
-```
-Title:  Maya Chen @lumenrecords
-Notes:  $400 / Album cover
-        owes $200
-Due:    Nov 5
-```
-
-- The title is the client, optionally followed by `@brand`. Extra words, counts like `2/3` and notes in brackets are understood.
-- The notes hold the work and the price in either order (`$120 / Longsleeve` or `2 Pcs / $250`), with `owes $…` on its own line or the same line. "Fully paid" means nothing is owed.
-- Only the date of the due date matters; times are ignored.
-
-When the app writes back, it keeps the existing wording and changes only what changed: the amount owed, the due date or the done state. New projects created in the app become new reminders in the same format, which also puts them on the calendar.
-
 ### Square: clients, invoices and money
 
-- **Clients come only from Square customers.** Reminders never create clients; a reminder links to a client when its title names one. If the Square customer shows up later, the project links on the next sync. A project whose reminder doesn't name its client can be attached by hand; the app remembers that spelling so the link survives later syncs. A name entered in Square as `Name @brand` becomes the client plus a brand.
-- **Revenue comes only from Square payments**, minus refunds. Square's processing fees become expenses. Nothing from Reminders is counted as income, so nothing is counted twice. What clients still owe appears separately as *expected*.
-- **"Owes" comes from the invoice.** When a project has a Square invoice, what it owes is that invoice's balance, partial payments included. Projects without an invoice use the amount in their reminder.
-- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, reminders and delivery: email, text, both, or just a link. With both, Square emails the invoice and Messages opens with the link ready to send, since Square's API sends one way per invoice. Send it or save it as a draft. A new invoice can also create its project and reminder in one step, with the project's own due date, status, priority, type, brief and notes filled in right there.
+- **Clients come only from Square customers**, plus any made in the app (which are created in Square too). A name entered in Square as `Name @brand` becomes the client plus a business.
+- **Revenue comes only from recorded payments**: Square payments minus refunds, plus cash income you add by hand. Square's processing fees are listed separately and only come off the net figure. What clients still owe appears separately as *expected*, with its own list where a project paid outside an invoice can be marked paid.
+- **"Owes" comes from the invoice.** When a project has a Square invoice, what it owes is that invoice's balance, partial payments included. An invoice Square marks paid always counts as fully paid.
+- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, payment reminders and delivery: email, text, both, or just a link. With both, Square emails the invoice and Messages opens with the link ready to send, since Square's API sends one way per invoice. Send it or save it as a draft. A new invoice also creates its project, with the project's own due date, status, brief and notes filled in right there.
 - Invoices created in Square itself after setup also become projects automatically.
 - Re-syncing is idempotent: payments, invoices and clients are matched by their Square IDs, so nothing is duplicated.
 
 The access token is stored in the iOS Keychain.
 
+### Calendar
+
+- **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
+- **Today's events** from the calendars you choose appear on Today. Atelier's own due-date events are left out there, so each deadline shows once.
+
 ### Mail
 
-A small IMAP and SMTP client written for the app, with presets for common hosts and support for several accounts. Swiping a message archives it to the server's Archive folder, creating one if needed. Nothing is deleted from the app.
+A small IMAP and SMTP client written for the app, with presets for Gmail and iCloud and manual settings for any other host, and support for several accounts. Swiping a message archives it to the server's Archive folder, creating one if needed. Delete moves a message to Trash, and deleting it from Trash removes it for good.
 
 - **Signatures** per account, plus **templates and saved replies** with `{first}`, `{name}` and `{business}` filled in.
 - **Attachments:** open them with Quick Look, and attach photos or files when writing. Forwarding keeps them.
 - **Drafts** save to the server's Drafts folder when you cancel a message.
 - **Star** (the IMAP flag, so it shows in other mail apps), **pin to top**, and **snooze** (hidden, then back with a notification).
 - **Replied** messages are marked on the server and show a reply arrow.
-- **Clients:** a message from a client's or brand's address shows that client; other senders get "Link to client" with suggestions. A message can be linked to a project, and each client's page lists your conversations.
-- **Select several** messages to mark read or unread, star or archive them. Search also matches attachment names in mail you've opened.
-
-### Notes
-
-Apple has no API for iCloud Notes. Instead, Atelier syncs a folder of notes that Apple Notes keeps in a mail account (the "Notes" setting under that account on iPhone). Each note is a message in that folder, so edits on either side show up on the other.
-
-### Calendar
-
-Read-only. Reminders with due dates already appear in Calendar, so Atelier adds no events of its own and each project shows up once.
+- **Clients:** a message from a client's or business's address shows that client; other senders get "Link to client" with suggestions. A message can be linked to a project, and each client's page lists your conversations.
+- **Select several** messages to mark read or unread, star, archive or delete them. Search also matches attachment names in mail you've opened.
 
 ## Organizing
 
-- **Tags with colors** on projects, filter Projects by tag, and manage them in Settings → Tags.
 - **Favorite projects and pinned clients** sort to the top.
-- **Select several** projects or clients for bulk actions: complete, set status, mark paid, tag, favorite, archive, pin or remove.
+- **Select several** projects or clients for bulk actions: complete, set status, mark paid, favorite, archive, pin or remove.
 - **Recently viewed** records show in Search before you type.
-- **Saved invoice items** of your own, next to the Square item library; save any line from the composer with a swipe.
-- **Quick Capture:** press and hold the tab bar from anywhere to add a project, client, invoice, note, email, expense or income.
-- **Monthly summary:** income, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
-- Context menus on invoices and transactions, and a loading skeleton for mail.
+- **Quick Capture:** press and hold the tab bar from anywhere to add a project, client, invoice, email, expense or income.
+- **Monthly summary:** income, processor fees, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
+- Context menus on projects, clients, invoices, transactions and mail, and a loading skeleton for mail.
 
 ## Safety net
 
-- **Recently Deleted** (Settings → Workspace) keeps deleted projects, clients, notes and transactions for 30 days. Restoring brings back their links: a client's brands and projects, a project's tags, and a fresh reminder if the old one was deleted too.
+- **Recently Deleted** (Settings → Workspace) keeps deleted projects, clients and transactions for 30 days. Restoring brings back their links: a client's businesses and projects, and a project's calendar event.
 - **Shake to undo** the last edit, completion or delete, after a confirmation. Sync changes stay off the undo list.
 - **Automatic saving:** swipe away an edited project or client and the change is kept; Cancel throws it away. Unsent mail is offered as a draft.
 - **Haptic confirmations** when you complete a project, mark it paid, save, or send an invoice or email.
 
 ## Settings
 
-- **Business profile:** logo, name, email, phone, website, address and opening hours.
+- **Business profile:** logo, name, email, phone, website and address.
+- **Currency:** the most used currencies, each with its symbol.
 - **Formats:** date style (Oct 31, 31 Oct, 10/31, 31/10), 12- or 24-hour time, and the first day of the week, used everywhere from Finance to the calendar.
-- **Defaults:** status, price and due date for new projects; due date, deposit, tips and payment terms for new invoices.
-- **Notifications:** quiet hours (scheduled reminders move to when they end; mail and payment alerts arrive silently), quiet outside business hours, and notifications grouped by kind.
-- **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay; amounts hidden until Face ID; a blurred app switcher; amounts hidden on widgets.
-- **App icon:** Black Glass, White, Graphite or Outline.
+- **Defaults:** status and due date for new projects (new projects start as Not Started); due date, deposit, tips and payment terms for new invoices.
+- **Notifications:** deadline reminders (day of, day before, two days before), an overdue nudge, a morning summary, a monthly summary, invoice paid or overdue, and new mail, grouped by kind.
+- **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay, behind a blur with a single Unlock button that fades away; an optional blur for the app switcher that fades in as you swipe away; and amounts in widgets hidden while the iPhone is locked.
+- **App icon:** Black (the default), White, and a glass version of each.
 - **What's New:** the changelog, inside Settings.
 
 ## Widget
@@ -117,10 +93,11 @@ One configurable "Atelier" widget in small, medium and large sizes, which shows 
 - calendar
 - invoices
 - quick add
-- notes
 - mail
 
 The large Calendar is a month grid with dots for events and deadlines. Tapping a day shows that day's events, and the widget goes back to today after 30 seconds. Lock Screen widgets show what's due or this month's income.
+
+With "Hide amounts in widgets" on, amounts are marked private, so iOS hides them on the Lock Screen and in Today View while the iPhone is locked, and shows them on the Home Screen.
 
 The app writes a small snapshot to its App Group and the widget reads it, so the widget never opens the database.
 
@@ -128,44 +105,44 @@ The app writes a small snapshot to its App Group and the widget reads it, so the
 
 - **SwiftUI and SwiftData** on iOS 26, built with Xcode 27.
 - **WidgetKit with App Intents** for the configurable widget and the tappable calendar days.
-- **EventKit** for Reminders and Calendar, **BackgroundTasks** for refreshes, and local notifications for deadlines, overdue work, paid invoices, a daily summary and new mail.
+- **EventKit** for due-date events and today's schedule, **BackgroundTasks** for refreshes, and local notifications for deadlines, overdue work, paid invoices, a daily summary and new mail.
 - **Square's REST API** for customers, catalog, orders, invoices and payments. It's the only web service the app talks to.
 - **Hand-written IMAP, SMTP and MIME** (quoted-printable, base64, encoded headers, IMAP's UTF-7 folder names) on top of `URLSessionStreamTask`, including STARTTLS.
-- **A parser for Reminders entries**, versioned, so it can re-read old reminders when the rules improve.
+- **A privacy shield** in its own window above the app, so the app-switcher blur and the lock cover open sheets too.
 - **JSON backup and restore**, plus CSV import for Square transaction exports and bank statements.
 
-All data stays on the phone, apart from what syncs with the user's own Reminders, Square and mail accounts. There's no Atelier server and no analytics.
+All data stays on the phone, apart from what syncs with the user's own Square and mail accounts and the due dates written to their calendar. There's no Atelier server and no analytics.
 
 ## Design
 
-Black background, white type and monochrome glass by default, from the floating tab bar to the cards, sheets and widget. Color appears only where it carries meaning, such as overdue dates, tags and calendar colors.
+Black background, white type and monochrome glass by default, from the floating tab bar to the cards, sheets and widget. Color appears only where it carries meaning, such as overdue dates and calendar colors.
 
-- **Appearance:** Dark (the original), Light, or follow the system. Every screen is drawn from a few adaptive colors (ink, paper, accent), so both modes stay consistent.
+- **Appearance:** Dark (the original), Light, or follow the system, switching live, even with Settings open. Every screen is drawn from a few adaptive colors (ink, paper, accent), so both modes stay consistent.
 - **Accent:** Monochrome or one of seven colors, used for selected tabs and chips, main buttons and switches.
+- **One set of controls:** choices like Day/Week/Month/Year, Dark/Light/System, Income/Expense and mail providers all use the same chips.
 - **Accessibility:** large figures grow with your text size, rows read as one item in VoiceOver with favorite, pinned, starred and unread states announced, and loading animations respect Reduce Motion.
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, over 140 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, over 110 checks, run in the Simulator. It covers:
 
-- the Reminders parser and write-back against real-world entry formats
 - client matching and de-duplication
-- finance totals
+- finance totals, with processor fees kept apart from expenses
 - decoding Square JSON (shapes copied from real responses)
-- invoice → project → reminder creation
+- invoice → project creation
 - MIME
 - backup round-trips
 - search ranking
 - attaching projects to clients by hand
 - keeping the sample workspace away from real data and services
-- Reminders and Calendar sync against a throwaway list
+- due dates written to, moved on and removed from a calendar
 
-Mail, archiving and notes sync run against a small fake IMAP/SMTP server written in Python. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
+Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
-Sample data (from Settings, or a launch flag for screenshots) opens a separate in-memory workspace that stands in for everything, mail included. While it's open nothing syncs with Square, Reminders or Notes, the widget keeps showing real data, and exiting brings the real workspace back untouched.
+Sample data (from Settings, or a launch flag for screenshots) opens a separate in-memory workspace that stands in for everything, mail included. While it's open nothing syncs with Square or the calendar, the widget keeps showing real data, and exiting brings the real workspace back untouched.
 
 ## Status
 
-In daily use on one iPhone. It's a personal tool, not a product, so there are no builds to download and no plans for the App Store.
+In daily use on one iPhone. There are no builds to download.
 
 © 2026 Byaydenrx. All rights reserved.
