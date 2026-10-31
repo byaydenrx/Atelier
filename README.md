@@ -63,6 +63,14 @@ The access token is stored in the iOS Keychain.
 
 A small IMAP and SMTP client written for the app, with presets for common hosts and support for several accounts. Swiping a message archives it to the server's Archive folder, creating one if needed. Nothing is deleted from the app.
 
+- **Signatures** per account, plus **templates and saved replies** with `{first}`, `{name}` and `{business}` filled in.
+- **Attachments:** open them with Quick Look, and attach photos or files when writing. Forwarding keeps them.
+- **Drafts** save to the server's Drafts folder when you cancel a message.
+- **Star** (the IMAP flag, so it shows in other mail apps), **pin to top**, and **snooze** (hidden, then back with a notification).
+- **Replied** messages are marked on the server and show a reply arrow.
+- **Clients:** a message from a client's or brand's address shows that client; other senders get "Link to client" with suggestions. A message can be linked to a project, and each client's page lists your conversations.
+- **Select several** messages to mark read or unread, star or archive them. Search also matches attachment names in mail you've opened.
+
 ### Notes
 
 Apple has no API for iCloud Notes. Instead, Atelier syncs a folder of notes that Apple Notes keeps in a mail account (the "Notes" setting under that account on iPhone). Each note is a message in that folder, so edits on either side show up on the other.
