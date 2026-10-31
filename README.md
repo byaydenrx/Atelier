@@ -95,6 +95,16 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Automatic saving:** swipe away an edited project or client and the change is kept; Cancel throws it away. Unsent mail is offered as a draft.
 - **Haptic confirmations** when you complete a project, mark it paid, save, or send an invoice or email.
 
+## Feedback
+
+**Make Atelier Better**, at the bottom of Settings, collects ideas and bug reports, and the roadmap is built from them. All of it lives in this repository's [Issues](https://github.com/byaydenrx/Atelier/issues).
+
+- **Sending:** pick Feature Request, Bug Report or Other, write it, attach up to four screenshots and tap Submit Feedback. Each submission becomes an issue labelled with its category. Words are kept until they're sent, so leaving Settings never loses them.
+- **With or without a GitHub account:** with a GitHub token connected (Settings → Connections → GitHub, kept in the Keychain), feedback is posted from the app. Without one, GitHub's new-issue page opens already filled in, with screenshots copied for pasting.
+- **Screenshots** are shrunk and committed to a separate `feedback-assets` branch, so the main branch stays documentation only. The form warns that feedback is public, so screenshots should be checked for client names and amounts.
+- **Community Roadmap:** what's In Development, and the Most Requested features ranked by votes. Votes are 👍 reactions on the issue: from the app when GitHub is connected, otherwise on github.com. The list is cached, so it opens offline.
+- **Feedback Inbox:** only shown when the connected token can manage the repository. It filters by New, Planned, In Development or Closed, by category and by search, and sorts by date or votes. Swipe right to plan or start a request, left to finish or decline it. Each request shows its screenshots and comments, and you can change its status or category and reply. Statuses are labels; Done and Won't Do close the issue as completed or not planned.
+
 ## Settings
 
 - **Business profile:** logo, name, email, phone, website and address.
@@ -147,7 +157,7 @@ Black background, white type and monochrome glass by default, from the floating 
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, over 130 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, over 160 checks, run in the Simulator. It covers:
 
 - client matching and de-duplication
 - finance totals, with processor fees kept apart from expenses
@@ -162,8 +172,9 @@ Atelier has a built-in end-to-end self-test, over 130 checks, run in the Simulat
 - the Today layout: old layouts carrying over, presets, pairing small widgets, moving and resizing
 - export and import: settings and records in the file, duplicates found by content, previews that change nothing
 - backup files, retention, sync status and opening the database through the migration plan
+- feedback: issue text and titles, screenshot handling, the github.com fallback, the roadmap's order, votes, statuses and replies
 
-Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
+Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, and feedback runs against a small fake GitHub API, so tests never post real issues. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
 Sample data (from Settings, or a launch flag for screenshots) opens a separate in-memory workspace that stands in for everything, mail included. While it's open nothing syncs with Square or the calendar, the widget keeps showing real data, and exiting brings the real workspace back untouched.
 
