@@ -90,6 +90,13 @@ Read-only. Reminders with due dates already appear in Calendar, so Atelier adds 
 - **Monthly summary:** income, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
 - Context menus on invoices and transactions, and a loading skeleton for mail.
 
+## Safety net
+
+- **Recently Deleted** (Settings → Workspace) keeps deleted projects, clients, notes and transactions for 30 days. Restoring brings back their links: a client's brands and projects, a project's tags, and a fresh reminder if the old one was deleted too.
+- **Shake to undo** the last edit, completion or delete, after a confirmation. Sync changes stay off the undo list.
+- **Automatic saving:** swipe away an edited project or client and the change is kept; Cancel throws it away. Unsent mail is offered as a draft.
+- **Haptic confirmations** when you complete a project, mark it paid, save, or send an invoice or email.
+
 ## Settings
 
 - **Business profile:** logo, name, email, phone, website, address and opening hours.
