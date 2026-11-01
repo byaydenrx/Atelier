@@ -14,15 +14,15 @@ Atelier brings that together. Square stays the source of truth for clients and m
 
 ## What's in it
 
-Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs, or swipe sideways on any empty space.
+Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs (the selection flows along like a drop of liquid, and the icons under it change colour), or swipe sideways on any empty space. Rows light up the moment you tap them, then the page opens.
 
 | Tab | What it shows |
 | --- | --- |
 | **Dashboard** | Widgets you arrange yourself (see below) |
 | **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Waiting, Ready, Completed) and its invoice's status |
 | **Clients** | Square customers, their businesses and Instagram handles, active and past projects, total owed. A **Top** filter ranks clients by what they've paid. Any project can be attached to a client by hand |
-| **Invoices** | Square invoices with status and balance; write a new one without leaving the app |
-| **Finance** | Income and expenses by day, week, month or year, with history and what's still expected. Tap a bar (or near one) in the chart to see that day's numbers. Square's processing fees are kept apart from expenses, with their own list and total |
+| **Invoices** | Square invoices with status and balance; write a new one without leaving the app, with its project set up the same way as New Project and the next invoice number shown |
+| **Finance** | Income and expenses by day, week, month or year, with history and what's still expected. Tap a bar (or near one) in the chart to see that day's numbers. Square's processing fees are kept apart from expenses, in their own Processor Fees box under Income |
 | **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive, delete |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
 
@@ -75,7 +75,7 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Select several** projects or clients for bulk actions: complete, set status, mark paid, favorite, archive, pin or remove.
 - **Recently viewed** records show in Search before you type.
 - **Quick Capture:** the + button adds a project, client, invoice, email, expense or income.
-- **Monthly summary:** income, processor fees, expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
+- **Monthly summary:** income, processor fees (in their own box), expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
 - Context menus on projects, clients, invoices, transactions and mail, and a loading skeleton for mail.
 
 ## Your data
@@ -114,7 +114,7 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Notifications:** deadline reminders (day of, day before, two days before), an overdue nudge, a morning summary, a monthly summary, invoice paid or overdue, and new mail, grouped by kind.
 - **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay, behind a blur with a single Unlock button that fades away; an optional blur for the app switcher that fades in as you swipe away (otherwise the switcher shows the app as it is); and amounts in widgets hidden while the iPhone is locked.
 - **App icon:** Black (the default), White, and a glass version of each.
-- **What's New:** the changelog, inside Settings.
+- **What's New:** the changelog, next to Make Atelier Better at the bottom of Settings.
 
 ## Widget
 
