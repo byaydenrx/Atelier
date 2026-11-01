@@ -57,12 +57,13 @@ Each client has one profile with the details that matter once: full name, email,
 - **Statuses of your own** ("Sketching", "At the printer"), each sitting in a built-in stage, and the **time spent in each status**.
 - **History:** status changes, payments, moved deadlines and important edits, newest first.
 - **Money:** record payments and deposits as they come in. They go into Finance tied to the project and client and come off what's owed. Add an expense by picking one already in Finance (from Square or added by hand) or a new one; profit is worked out after the project's own expenses.
+- **Billing:** a fixed price, hourly, or a retainer. Hourly projects have a **timer** (one runs at a time) and time added by hand; unbilled hours go onto a Square invoice as one line, or onto what's owed. Rates come from the project, the client or a default. A retainer adds its amount to what's owed every week, month, quarter or year, catching up once for each missed date.
 - **Templates:** save a project's price, status, timing and brief and start new ones from it. Projects can also be **duplicated for another client**, **pinned**, **archived**, **cancelled with a reason**, and **edited in bulk** (dates, client, status).
 - **Notes** right on the project page.
 
 ## Finance
 
-- **Income and payments:** income received, expected income and money owed, partial payments and deposits, and recurring income.
+- **Income and payments:** income received, expected income and money owed, partial payments and deposits, and recurring income. Payments can be in **another currency**: the amount as paid is kept, and it's converted at that day's European Central Bank rate (fetched only when you ask) so totals add up.
 - **Expenses:** one tap away under the Expenses tab, with Square's processor fees and recurring costs in their own boxes beside them.
 - **Expected:** aging in 0–30, 31–60, 61–90 and 90+ days, and a forecast built only from agreed money (open invoices and project balances) by due date.
 - **Reports:** revenue over the last 12 months with profit, and month-by-month and year-over-year comparisons. Tap any chart or figure to see the transactions behind it.
@@ -88,9 +89,13 @@ Each client has one profile with the details that matter once: full name, email,
 - **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
 - **Today's events** from the calendars you choose appear on the Dashboard. Atelier's own due-date events are left out there, so each deadline shows once.
 
+### PayPal
+
+Payments received through PayPal come into Finance as income, matched to a client by the payer's email, with PayPal's fees kept apart like Square's. It reads only (PayPal's Transaction Search, with the REST credentials from a PayPal developer app kept in the Keychain), never sends or changes anything, and catches up in PayPal's 31-day windows.
+
 ### Mail
 
-A small IMAP and SMTP client written for the app, with presets for Gmail and iCloud and manual settings for any other host, and support for several accounts. Swiping a message archives it to the server's Archive folder, creating one if needed. Delete moves a message to Trash, and deleting it from Trash removes it for good.
+A small IMAP and SMTP client written for the app, with presets for Gmail, iCloud and Outlook and manual settings for any other host, and support for several accounts. Gmail and iCloud use an app password, with the steps and a link to the right page shown in the app. Outlook, Hotmail and Microsoft 365 sign in with Microsoft (XOAUTH2), since Microsoft no longer allows passwords for mail apps; that needs Atelier's Microsoft app registration, which isn't set up yet. Swiping a message archives it to the server's Archive folder, creating one if needed. Delete moves a message to Trash, and deleting it from Trash removes it for good.
 
 - **Signatures** per account, plus **templates and saved replies** with `{first}`, `{name}` and `{business}` filled in.
 - **Designed emails** (receipts, form submissions, newsletters) show as their sender made them, on a white card fitted to the phone, and the whole message scrolls as one page.
@@ -108,6 +113,8 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 - **Select several** projects or clients for bulk actions: edit dates, client or status, complete, mark paid, pin, duplicate, archive or remove.
 - **Recently viewed** records show in Search before you type.
 - **Quick Capture:** the + button adds a project, client, invoice, email, expense or income.
+- **Shortcuts and Siri:** new project, new client, log an expense (with the amount and what it was), start a timer, "what's due today" and "income this month" (answered without opening the app).
+- **Save to Atelier** from the share sheet: text or a link from Mail, Messages, Instagram or Safari becomes a new project or client the next time the app opens.
 - **Monthly summary:** income, processor fees (in their own box), expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
 - Context menus on projects, clients, invoices, transactions and mail, and a loading skeleton for mail.
 
@@ -154,6 +161,7 @@ Licenses aren't on sale yet.
 - **Business profile:** logo, name, email, phone, website and address.
 - **Currency:** the most used currencies, each with its symbol.
 - **Formats:** date style (Oct 31, 31 Oct, 10/31, 31/10), 12- or 24-hour time, and the first day of the week, used everywhere from Finance to the calendar.
+- **About Atelier:** version, support, the privacy policy, terms and acknowledgements.
 - **First launch:** a short welcome that lists what's in the app, asks your name and business, connects Square (or lets you work by hand) and explains the trial.
 - **Project statuses and templates.**
 - **Defaults:** status and due date for new projects (new projects start as Not Started); due date, deposit, tips and payment terms for new invoices.
@@ -185,7 +193,10 @@ The app writes a small snapshot to its App Group and the widget reads it, so the
 - **SwiftUI and SwiftData** on iOS 26, built with Xcode 27.
 - **WidgetKit with App Intents** for the configurable widget and the tappable calendar days.
 - **EventKit** for due-date events and today's schedule, **BackgroundTasks** for refreshes, and local notifications for deadlines, overdue work, paid invoices, a daily summary and new mail.
-- **Square's REST API** for customers, catalog, orders, invoices and payments. Besides Square, the app only talks to GitHub (for feedback) and, when a store-bought key is activated, the store's license check.
+- **Square's REST API** for customers, catalog, orders, invoices and payments, with OAuth (PKCE) sign-in, and **PayPal's Transaction Search** for payments. Besides those, the app only talks to GitHub (for feedback), Apple Maps (address suggestions), the European Central Bank's rates through frankfurter.dev (when you ask for a rate) and, when a store-bought key is activated, the store's license check.
+- **App Intents** for Shortcuts and Siri, and a **share extension** that hands items to the app through the App Group.
+- **iPhone and iPad**, with the iPad (and Mac) layout in a centered column; a **Mac Catalyst** build runs locally.
+- **os.Logger** with private fields marked, so logs never show client names or amounts.
 - **CryptoKit** (Ed25519) to check license keys on the device, and the iCloud Keychain to carry them to the user's other devices.
 - **PDF reports** drawn with UIKit's PDF renderer, and Swift Charts for every chart.
 - **Hand-written IMAP, SMTP and MIME** (quoted-printable, base64, encoded headers, IMAP's UTF-7 folder names) on top of `URLSessionStreamTask`, including STARTTLS.
@@ -205,7 +216,7 @@ Black background, white type and monochrome glass by default, from the floating 
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, 250 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, 261 checks, run in the Simulator, plus a Swift Testing target for the core logic (`xcodebuild test`) and a speed test that times the heavy work on five years of a busy studio (1,000 clients, 3,000 projects, 10,000 payments). It covers:
 
 - client matching and de-duplication
 - finance totals, with processor fees kept apart from expenses
@@ -225,11 +236,12 @@ Atelier has a built-in end-to-end self-test, 250 checks, run in the Simulator. I
 - clients: custom fields, money totals, money filters and the figure shown beside each name, the activity timeline, last contacted and merging duplicates
 - projects: recorded payments and deposits, profit, custom statuses, time in status, templates and duplicates
 - Square sign-in: the PKCE challenge, the sign-in link and checking Square's reply
-- mail: pictures sent inside the message and shown where the sender put them
+- mail: pictures sent inside the message and shown where the sender put them, and the Outlook sign-in strings
+- time tracking, billing hours, retainers, and PayPal payments (against a fake PayPal API)
 - finance: recurring transactions, totals, aging, the forecast, unusual expenses, the health score, tax estimates, CSV and PDF export and custom ranges
 - licenses: signed keys accepted, altered or foreign keys refused, and online activation against a fake store
 
-Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, feedback runs against a small fake GitHub API, and license activation against a fake store, so tests never post real issues or touch real purchases.
+Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, feedback against a small fake GitHub API, license activation against a fake store and PayPal against a fake PayPal API, so tests never post real issues or touch real money.
 
 A second copy of the app, **Atelier 2**, is installed next to the real one for testing. It's a separate app with no access to the real data, and it starts like a fresh install every time it's opened, so the first-launch welcome, the trial and an empty workspace can be tried again and again. Its Settings can end the trial, jump to its last day or start it again, to see each stage. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
@@ -237,6 +249,6 @@ Sample data (from Settings, or a launch flag for screenshots) opens a separate i
 
 ## Status
 
-In daily use on one iPhone. There are no builds to download yet.
+In daily use on one iPhone. There are no builds to download yet: public builds wait on a paid Apple developer account.
 
 © 2026 Byaydenrx. All rights reserved.
