@@ -14,15 +14,15 @@ Atelier brings that together. Square stays the source of truth for clients and m
 
 ## What's in it
 
-Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs (the selection flows along like a drop of liquid, and the icons under it change colour), or swipe sideways on any empty space. Rows light up the moment you tap them, then the page opens.
+Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs (the selection flows along like a drop of liquid, and the icons under it change colour), or swipe sideways on any empty space. Every row lights up the moment you tap it, then the page opens, so you see what you picked.
 
 | Tab | What it shows |
 | --- | --- |
 | **Dashboard** | Widgets you arrange yourself (see below) |
-| **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Waiting, Ready, Completed, Cancelled, or your own) and its invoice's status, as a list or a calendar |
-| **Clients** | A small CRM: each client's businesses, contact details, tags, projects, money and history (see below). A **Top** filter ranks clients by what they've paid |
+| **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Completed, Cancelled, or your own) and its invoice's status, as a list or a calendar |
+| **Clients** | A small CRM: each client's businesses, contact details, projects, money and history (see below). **Current**, **Recents**, **Top** and **All** tabs, each with a count |
 | **Invoices** | Square invoices with status and balance; write a new one without leaving the app, with its project set up the same way as New Project and the next invoice number shown |
-| **Finance** | Income, expenses and profit by day, week, month, year or a custom range, plus analysis pages (see below). Square's processing fees are kept apart from expenses, in their own Processor Fees box under Income |
+| **Finance** | Income, expenses and profit by day, week, month, year or a custom range, plus analysis pages (see below). Square's processor fees are kept apart from expenses, in their own box under the Expenses tab |
 | **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive, delete |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
 
@@ -33,44 +33,42 @@ The Dashboard is a grid of widgets, each small (half width) or wide. Hold any em
 The widgets:
 
 - **Essentials:** income overview with quick actions, quick-create buttons, a daily summary (due, overdue, money in today, next event, unread mail).
-- **Projects:** due today, overdue, needs attention, upcoming deadlines, waiting on clients, awaiting payment, ready to deliver, recently updated, active project cards, and a workload chart by status.
-- **Money:** income today, this week and this month; outstanding invoices; expected income; a monthly goal with progress; this week against last week; a business health check (income pace, overdue work and invoices, waiting clients, what's due); recent transactions and recent expenses.
+- **Projects:** due today, overdue, needs attention, upcoming deadlines, awaiting payment, recently updated, active project cards, and a workload chart by status.
+- **Money:** income today, this week and this month; outstanding invoices; expected income; a monthly goal with progress; this week against last week; a business health check (income pace, overdue work and invoices, what's due); recent transactions and recent expenses.
 - **Schedule and mail:** a month calendar of due dates, upcoming events, unread mail.
 
 The header can show a time-of-day greeting, your own greeting, or none, and the date in full, short, or not at all. **Screen privacy** hides every amount in the app, for showing your screen to someone or working in public.
 
 ## Clients
 
-Each client has one profile with the details that matter once: full name, email, phone, Instagram, website, billing address, notes, pricing notes (negotiated rates, discounts, special arrangements), tags and custom fields of your own. Businesses are the one thing a client can have several of, each with its own email, Instagram, phone and website.
+Each client has one profile with the details that matter once: full name, email, phone, Instagram, billing address (with address suggestions as you type), notes, pricing notes (negotiated rates, discounts, special arrangements) and custom fields of your own. Businesses are the one thing a client can have several of, each with its own email, Instagram, phone and website.
 
-- **Money at a glance:** lifetime value (what was contracted), income received, what's still owed, profit after expenses and processing fees, and the average project.
-- **Work:** active, completed, archived and cancelled projects (with the reason), invoices, and every transaction tied to them.
-- **Activity timeline:** projects started and finished, status changes, payments, invoices, emails sent and received, revisions, and notes, calls, meetings and messages you log.
+- **Money at a glance:** average project, what's still owed and the number of projects, then a **lifetime value** chart: the total, and the work booked month by month.
+- **Work:** active, completed, archived and cancelled projects (with the reason) and invoices.
+- **Activity timeline:** projects started and finished, status changes, payments, invoices, emails sent and received, and notes, calls, meetings and messages you log.
 - **Last contacted** updates on its own when you email a client or a client emails you.
-- **Merge duplicates:** projects, invoices, payments, businesses, tags and notes move to the client you keep. A merged Square customer keeps landing on the right client.
-- **Search and filter** by name, business, tags, notes or custom fields; filter by tag, money owed, revenue or activity, and sort by revenue, balance, recent activity or last contact.
+- **Merge duplicates:** projects, invoices, payments, businesses and notes move to the client you keep. A merged Square customer keeps landing on the right client.
+- **Recents** lists clients added, or with a new project or invoice, in the last 30 days. **Top** shows the best clients by what they've paid, repeat clients and how much of the revenue they bring, and new and returning clients this year.
+- **Filters** for money: who owes money or is all paid, anything overdue, no payments yet, and paid, owed or average project above an amount. The matching figure shows beside each name. Sort by name, revenue, amount owed, average project or newest.
 
 ## Projects
 
-- **Dates:** a start date and due date on every project, plus any number of milestones and extra deadlines. Days overdue are counted for you. A **calendar view** shows starts, due dates and milestones by month.
+- **Dates:** a start date and due date on every project. Days overdue are counted for you. A **calendar view** shows starts and due dates by month.
 - **Statuses of your own** ("Sketching", "At the printer"), each sitting in a built-in stage, and the **time spent in each status**.
-- **Revisions:** each round of changes the client asked for, when it was requested and when it went back, and a "waiting on client feedback" marker.
 - **History:** status changes, payments, moved deadlines and important edits, newest first.
-- **Money:** record payments and deposits as they come in. They go into Finance tied to the project and client and come off what's owed. Profit is worked out after the project's own expenses and processing fees.
-- **Templates:** save a project's price, status, timing, brief and milestones and start new ones from it. Projects can also be **duplicated for another client**, **pinned**, **archived**, **cancelled with a reason**, and **edited in bulk** (dates, client, status).
-- **Notes** right on the project page, and **recently viewed** projects at the top of the list.
+- **Money:** record payments and deposits as they come in. They go into Finance tied to the project and client and come off what's owed. Add an expense by picking one already in Finance (from Square or added by hand) or a new one; profit is worked out after the project's own expenses.
+- **Templates:** save a project's price, status, timing and brief and start new ones from it. Projects can also be **duplicated for another client**, **pinned**, **archived**, **cancelled with a reason**, and **edited in bulk** (dates, client, status).
+- **Notes** right on the project page.
 
 ## Finance
 
-- **Income and payments:** income received, expected income, money owed and recurring income; partial payments and deposits; contracted value kept apart from money actually received; income by source.
-- **Expenses:** your own categories, recurring expenses, tax-deductible marking, a breakdown by category, and anything unusually high flagged. Processing fees stay in their own section.
-- **Reports:** revenue over the last 12 months with profit, month-by-month and year-over-year comparisons, income sources, averages (project value, client value, days from commission to paid, days to finish a project). Tap any chart or figure to see the transactions behind it.
-- **Money owed:** aging in 0–30, 31–60, 61–90 and 90+ days, and a forecast built only from agreed money (open invoices and project balances) by due date.
-- **Business overview and health:** a 0–100 score from profit margin, revenue trend, how old unpaid money is and deadlines kept, with this month against last month and the same month a year ago, and the current workload.
-- **Client value:** best clients by revenue or profit, repeat clients and how much of the revenue they bring, new and returning clients this year.
-- **Monthly revenue target** with progress and how each month did.
-- **Tax estimate** to set aside, using built-in 2026 rates for the US (federal, self-employment and state), the UK, Canada and Australia, or a flat rate. It's a guide, not tax advice.
-- **Export:** transactions as CSV, and PDF reports for any range, including a monthly business report.
+- **Income and payments:** income received, expected income and money owed, partial payments and deposits, and recurring income.
+- **Expenses:** one tap away under the Expenses tab, with Square's processor fees and recurring costs in their own boxes beside them.
+- **Expected:** aging in 0–30, 31–60, 61–90 and 90+ days, and a forecast built only from agreed money (open invoices and project balances) by due date.
+- **Reports:** revenue over the last 12 months with profit, and month-by-month and year-over-year comparisons. Tap any chart or figure to see the transactions behind it.
+- **Business overview and health:** a 0–100 score from the revenue trend, how old unpaid money is and deadlines kept, with this month against last month and the same month a year ago, the current workload, and averages (project value, client value, time to finish a project).
+- **Tax estimate** to set aside on income minus expenses and fees, using built-in 2026 rates for the US (federal, self-employment and state), the UK, Canada and Australia, or a flat rate. It's a guide, not tax advice.
+- **Export:** transactions as CSV (date, type, title, amount, client, project, source, fee, notes), and PDF reports for any range, including a monthly business report.
 
 ## How it connects
 
@@ -79,11 +77,11 @@ Each client has one profile with the details that matter once: full name, email,
 - **With Square connected, clients come only from Square customers**, plus any made in the app (which are created in Square too). Without Square, clients and payments are added by hand. A name entered in Square as `Name @brand` becomes the client plus a business.
 - **Revenue comes only from recorded payments**: Square payments minus refunds, plus payments you record by hand. Square payments are tied to their client and project automatically. Square's processing fees are listed separately and only come off profit. What clients still owe appears separately as *expected*.
 - **"Owes" comes from the invoice.** When a project has a Square invoice, what it owes is that invoice's balance, partial payments included. An invoice Square marks paid always counts as fully paid.
-- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, payment reminders and delivery: email, text, both, or just a link. With both, Square emails the invoice and Messages opens with the link ready to send, since Square's API sends one way per invoice. Send it or save it as a draft. A new invoice also creates its project, with the project's own due date, status, brief and notes filled in right there.
+- **Invoice composer.** Pick items from the Square item library or type custom ones, then set the due date, deposit, discount, tips, payment methods, payment reminders and delivery: email, text, both, or just a link. With both, Square emails the invoice and Messages opens with the link ready to send, since Square's API sends one way per invoice. Send it or save it as a draft. The invoice's title is also its new project's, with the brief and private notes in the same section and the project's own due date and status below.
 - Invoices created in Square itself after setup also become projects automatically.
 - Re-syncing is idempotent: payments, invoices and clients are matched by their Square IDs, so nothing is duplicated.
 
-The access token is stored in the iOS Keychain.
+**Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. The first-launch welcome connects Square right there.
 
 ### Calendar
 
@@ -95,7 +93,9 @@ The access token is stored in the iOS Keychain.
 A small IMAP and SMTP client written for the app, with presets for Gmail and iCloud and manual settings for any other host, and support for several accounts. Swiping a message archives it to the server's Archive folder, creating one if needed. Delete moves a message to Trash, and deleting it from Trash removes it for good.
 
 - **Signatures** per account, plus **templates and saved replies** with `{first}`, `{name}` and `{business}` filled in.
-- **Attachments:** open them with Quick Look, and attach photos or files when writing. Forwarding keeps them.
+- **Designed emails** (receipts, form submissions, newsletters) show as their sender made them, on a white card fitted to the phone, and the whole message scrolls as one page.
+- **Pictures** show inside the message, the way the other person sees them. Photos you attach go inside the email you send, under your text, not just as files.
+- **Attachments:** open them with Quick Look, and attach files when writing. Forwarding keeps them.
 - **Drafts** save to the server's Drafts folder when you cancel a message.
 - **Star** (the IMAP flag, so it shows in other mail apps), **pin to top**, and **snooze** (hidden, then back with a notification).
 - **Replied** messages are marked on the server and show a reply arrow.
@@ -105,7 +105,7 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 ## Organizing
 
 - **Pinned projects and clients** sort to the top.
-- **Select several** projects or clients for bulk actions: edit dates, client or status, complete, mark paid, pin, duplicate, archive, tag or remove.
+- **Select several** projects or clients for bulk actions: edit dates, client or status, complete, mark paid, pin, duplicate, archive or remove.
 - **Recently viewed** records show in Search before you type.
 - **Quick Capture:** the + button adds a project, client, invoice, email, expense or income.
 - **Monthly summary:** income, processor fees (in their own box), expenses, projects started and completed, new clients and top clients, with a notification on the 1st.
@@ -140,10 +140,10 @@ A small IMAP and SMTP client written for the app, with presets for Gmail and iCl
 
 ## Price and license
 
-Atelier is a one-time purchase: **$19.99**, no subscription. It starts with a **14-day free trial** with every feature open, and nothing interrupts the trial: no pop-ups or reminders, just two buttons at the top of Settings, **Purchase a License** and **Activate Your License**.
+Atelier is a one-time purchase: **$19.99**, no subscription. It starts with a **14-day free trial** with every feature open, and nothing interrupts the trial: no pop-ups or reminders. The top of Settings shows how many days are left, then **Purchase a License**, **Activate Your License** and **Restore Purchases**.
 
 - Licenses are sold outside the App Store and arrive as a key by email. Atelier keys are signed and checked on the device, with no account and no server; keys from an online store can also be activated over the internet.
-- A license is saved in the iCloud Keychain, so **Restore Purchase** picks it up on the user's other iPhones, iPads and Macs, and it survives reinstalling.
+- A license is saved in the iCloud Keychain, so **Restore Purchases** picks it up on the user's other iPhones, iPads and Macs, and it survives reinstalling.
 - When the trial ends, everything already in the app stays there to look through and export; adding and editing wait for a license.
 - The developer's own build always has full access.
 
@@ -154,8 +154,8 @@ Licenses aren't on sale yet.
 - **Business profile:** logo, name, email, phone, website and address.
 - **Currency:** the most used currencies, each with its symbol.
 - **Formats:** date style (Oct 31, 31 Oct, 10/31, 31/10), 12- or 24-hour time, and the first day of the week, used everywhere from Finance to the calendar.
-- **First launch:** a short welcome that asks your name and business, whether you'll connect Square or work by hand, and explains the trial.
-- **Project statuses and templates,** and **finance categories** (expense categories and income sources).
+- **First launch:** a short welcome that lists what's in the app, asks your name and business, connects Square (or lets you work by hand) and explains the trial.
+- **Project statuses and templates.**
 - **Defaults:** status and due date for new projects (new projects start as Not Started); due date, deposit, tips and payment terms for new invoices.
 - **Notifications:** deadline reminders (day of, day before, two days before), an overdue nudge, a morning summary, a monthly summary, invoice paid or overdue, and new mail, grouped by kind.
 - **Privacy & Lock:** Face ID, Touch ID or passcode lock with a delay, behind a blur with a single Unlock button that fades away; an optional blur for the app switcher that fades in as you swipe away (otherwise the switcher shows the app as it is); and amounts in widgets hidden while the iPhone is locked.
@@ -205,7 +205,7 @@ Black background, white type and monochrome glass by default, from the floating 
 
 ## How it's tested
 
-Atelier has a built-in end-to-end self-test, 240 checks, run in the Simulator. It covers:
+Atelier has a built-in end-to-end self-test, 250 checks, run in the Simulator. It covers:
 
 - client matching and de-duplication
 - finance totals, with processor fees kept apart from expenses
@@ -222,14 +222,16 @@ Atelier has a built-in end-to-end self-test, 240 checks, run in the Simulator. I
 - backup files, retention, sync status and opening the database through the migration plan
 - feedback: issue text and titles, screenshot handling, the github.com fallback, the roadmap's order, votes, statuses and replies
 - undo: deletes coming back with their links, staying off the edit undo list, and archived or deleted mail returning to the inbox
-- clients: tags, custom fields, money totals, filters, the activity timeline, last contacted and merging duplicates
-- projects: recorded payments and deposits, profit, custom statuses, time in status, milestones, revisions, templates and duplicates
+- clients: custom fields, money totals, money filters and the figure shown beside each name, the activity timeline, last contacted and merging duplicates
+- projects: recorded payments and deposits, profit, custom statuses, time in status, templates and duplicates
+- Square sign-in: the PKCE challenge, the sign-in link and checking Square's reply
+- mail: pictures sent inside the message and shown where the sender put them
 - finance: recurring transactions, totals, aging, the forecast, unusual expenses, the health score, tax estimates, CSV and PDF export and custom ranges
 - licenses: signed keys accepted, altered or foreign keys refused, and online activation against a fake store
 
 Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, feedback runs against a small fake GitHub API, and license activation against a fake store, so tests never post real issues or touch real purchases.
 
-A second copy of the app, **Atelier 2**, is installed next to the real one for testing. It's a separate app with no access to the real data, and it starts like a fresh install every time it's opened, so the first-launch welcome, the trial and an empty workspace can be tried again and again. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
+A second copy of the app, **Atelier 2**, is installed next to the real one for testing. It's a separate app with no access to the real data, and it starts like a fresh install every time it's opened, so the first-launch welcome, the trial and an empty workspace can be tried again and again. Its Settings can end the trial, jump to its last day or start it again, to see each stage. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
 Sample data (from Settings, or a launch flag for screenshots) opens a separate in-memory workspace that stands in for everything, mail included. While it's open nothing syncs with Square or the calendar, the widget keeps showing real data, and exiting brings the real workspace back untouched.
 
