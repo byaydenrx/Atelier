@@ -97,34 +97,6 @@ Without Square, Atelier makes the invoice itself: a PDF with your business detai
 
 PayPal and Stripe payments, PayPal and Stripe invoices, and bank accounts (SimpleFIN or statement files) are built and tested, with matching that counts each payment once across all of them. They're hidden for now, until each has a sign-in anyone can use. For now Atelier works with Square, or by hand.
 
-### Invoices without Square
-
-Whoever is connected sends the invoices: Square, PayPal (PayPal Invoicing) or Stripe (Stripe invoices), each emailing a pay button. With none connected, Atelier makes a PDF invoice on the phone, with your business details and how clients pay you, and emails it from your own mail account (or shares it). It's marked paid when the money reaches a connected bank account, or with one tap. With more than one connected, you choose who sends them; the Invoices tab asks first, and Settings → Invoices changes it.
-
-### Calendar
-
-- **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
-- **Today's events** from the calendars you choose appear on the Dashboard. Atelier's own due-date events are left out there, so each deadline shows once.
-
-### PayPal
-
-Payments received through PayPal come into Finance as income, matched to a client by the payer's email, with PayPal's fees kept apart like Square's. It reads only (PayPal's Transaction Search, with the REST credentials from a PayPal developer app kept in the Keychain), never sends or changes anything, and catches up in PayPal's 31-day windows.
-
-### Stripe
-
-Charges come into Finance at their full amount, with Stripe's fee kept apart, refunds as expenses, and the customer matched to a client by email. It uses a read-only restricted key kept in the Keychain. Payouts to the bank aren't income, so they aren't counted.
-
-### Bank accounts
-
-- **Connect** US and Canadian banks and cards through SimpleFIN Bridge (read-only; a setup token is pasted once), or **import** a CSV, OFX or QFX statement from any bank. Importing the same statement twice adds nothing twice.
-- **Each payment is counted once.** These are recognized and left out of the totals:
-  - payouts from Square, Stripe or PayPal (their payments are already counted, gross, with fees apart)
-  - money moving between your own accounts
-  - paying off a credit card (its purchases are the expenses)
-  - deposits you already recorded by hand
-- **Projects mark themselves paid:** a deposit for exactly what a project owes is matched to it.
-- **Business only, or mixed:** on a business-only account everything else counts. On a mixed account, transactions wait in Finance → To Review, where one tap sorts them as business, personal or a transfer. Atelier remembers the merchant for next time.
-
 ### Mail
 
 A small IMAP and SMTP client written for the app, with presets for Gmail, iCloud and Outlook and manual settings for any other host, and support for several accounts. Gmail and iCloud use an app password, with the steps and a link to the right page shown in the app. Outlook, Hotmail and Microsoft 365 sign in with Microsoft (XOAUTH2), since Microsoft no longer allows passwords for mail apps; that needs Atelier's Microsoft app registration, which isn't set up yet. Swiping a message archives it to the server's Archive folder, creating one if needed. Delete moves a message to Trash, and deleting it from Trash removes it for good.
@@ -225,7 +197,7 @@ The app writes a small snapshot to its App Group and the widget reads it, so the
 - **SwiftUI and SwiftData** on iOS 26, built with Xcode 27.
 - **WidgetKit with App Intents** for the configurable widget and the tappable calendar days.
 - **EventKit** for due-date events and today's schedule, **BackgroundTasks** for refreshes, and local notifications for deadlines, overdue work, paid invoices, a daily summary and new mail.
-- **Square's REST API** for customers, catalog, orders, invoices and payments, with OAuth (PKCE) sign-in, **PayPal's Transaction Search** and **Stripe's balance transactions** for payments, and **SimpleFIN** for bank accounts. Besides those, the app only talks to GitHub (for feedback), Apple Maps (address suggestions), the European Central Bank's rates through frankfurter.dev (when you ask for a rate) and, when a store-bought key is activated, the store's license check.
+- **Square's REST API** for customers, catalog, orders, invoices and payments, with OAuth (PKCE) sign-in, and, once they're switched on, **PayPal's** and **Stripe's** APIs and **SimpleFIN** for bank accounts. Besides those, the app only talks to GitHub (for feedback), Apple Maps (address suggestions), the European Central Bank's rates through frankfurter.dev (when you ask for a rate) and, when a store-bought key is activated, the store's license check.
 - **App Intents** for Shortcuts and Siri, and a **share extension** that hands items to the app through the App Group.
 - **iPhone and iPad**, with the iPad (and Mac) layout in a centered column; a **Mac Catalyst** build runs locally.
 - **os.Logger** with private fields marked, so logs never show client names or amounts.
