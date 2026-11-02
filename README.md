@@ -86,11 +86,11 @@ Each client has one profile with the details that matter once: full name, email,
 
 ### Invoices without Square
 
-Without Square (or by choice in Settings → Invoices), Atelier makes the invoice itself: a PDF with your business details and how clients pay you, emailed from your own mail account or shared, with a discount, tax, a deposit up front, the date of service, custom fields and terms. Mark it paid when the money arrives, and its project's balance follows.
+Without Square (or by choice in Settings → Invoices), Atelier makes the invoice itself: a PDF with your business details and how clients pay you, emailed from your own mail account or shared, with a discount, tax, a deposit up front, the date of service, custom fields and terms, in your own colour and a modern, classic or bold style with your logo (previewed in Settings → Invoices). Mark it paid when the money arrives, and its project's balance follows.
 
 ### Contracts
 
-A Contracts tab holds agreements and the templates they're made from (three to start with). Words in braces fill themselves in from the client, project, price and dates. The client signs on the iPhone with a finger, or the contract is emailed as a PDF and marked signed when it comes back; your own signature is added from Settings. "Add a Contract" on a new invoice sends it along: attached to the Square invoice as a PDF (Square's API has no contracts of its own), or with Atelier's invoice email.
+A Contracts tab holds agreements and the templates they're made from (three to start with). Words in braces fill themselves in from the client, project, price and dates. The client signs on the iPhone by typing their name and agreeing (a drawn signature is optional, or can be required), or the contract is emailed as a PDF and marked signed when it comes back; your own signature is added from Settings, with Undo while drawing. Ready-made clauses (late fees, kill fee, usage rights, confidentiality and more) drop in with a tap, and each contract can show a fee summary, the signer's title, a footer and page numbers, in a modern or classic look. "Add a Contract" on a new invoice sends it along: attached to the Square invoice as a PDF (Square's API has no contracts of its own), or with Atelier's invoice email.
 
 ### Calendar
 
