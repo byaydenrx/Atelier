@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Back to Atelier</title>
+<style>
+  body { font: -apple-system-body, system-ui, sans-serif; background: #000; color: #fff; display: grid; place-items: center; min-height: 90vh; margin: 0; text-align: center; }
+  a { color: #fff; }
+  p { opacity: .6; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Back to Atelier…</h1>
+  <p id="note">If nothing happens, <a id="open" href="#">tap here</a>.</p>
+</main>
+<script>
+  // Square's sign-in returns here (it only allows https). Hand the code to the app that asked:
+  // the state ends with ".atelier" or ".atelier2". Nothing is stored or sent anywhere else.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var state = q.get("state") || "";
+    var scheme = state.slice(state.lastIndexOf(".") + 1);
+    if (scheme !== "atelier" && scheme !== "atelier2") scheme = "atelier";
+    var target = scheme + "://square-callback" + location.search;
+    document.getElementById("open").href = target;
+    location.replace(target);
+  })();
+</script>
+</body>
+</html>
