@@ -22,7 +22,7 @@ Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on 
 | **Projects** | Every commission with its client, business, price, what's owed, status (Not Started, In Progress, Completed, Cancelled, or your own) and its invoice's status, as a list or a calendar |
 | **Clients** | A small CRM: each client's businesses, contact details, projects, money and history (see below). **Current**, **Recents**, **Top** and **All** tabs, each with a count |
 | **Invoices** | Square invoices with status and balance; write a new one without leaving the app, with its project set up the same way as New Project and the next invoice number shown |
-| **Finance** | Income, expenses and profit by day, week, month, year or a custom range, plus analysis pages (see below). Square's processor fees are kept apart from expenses, in their own box under the Expenses tab |
+| **Finance** | Income, expenses and profit by day, week, month, year or a custom range, plus analysis pages (see below). Processor fees are kept apart from expenses, in their own box under the Expenses tab. A search bar finds any transaction by name, client, project or amount |
 | **Mail** | One or more IMAP/SMTP accounts: read, reply, compose, archive, delete |
 | **Search** | One box across everything, ranked so names that start with what you typed come first |
 
@@ -82,7 +82,7 @@ Each client has one profile with the details that matter once: full name, email,
 - Invoices created in Square itself after setup also become projects automatically.
 - Re-syncing is idempotent: payments, invoices and clients are matched by their Square IDs, so nothing is duplicated.
 
-**Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. The first-launch welcome connects Square right there.
+**Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. On the first-launch welcome, "How do you get paid?" offers Square, Other (a bank, Stripe or PayPal) and Manual; Continue opens the sign-in and moves on once you're connected.
 
 ### Calendar
 
@@ -92,6 +92,21 @@ Each client has one profile with the details that matter once: full name, email,
 ### PayPal
 
 Payments received through PayPal come into Finance as income, matched to a client by the payer's email, with PayPal's fees kept apart like Square's. It reads only (PayPal's Transaction Search, with the REST credentials from a PayPal developer app kept in the Keychain), never sends or changes anything, and catches up in PayPal's 31-day windows.
+
+### Stripe
+
+Charges come into Finance at their full amount, with Stripe's fee kept apart, refunds as expenses, and the customer matched to a client by email. It uses a read-only restricted key kept in the Keychain. Payouts to the bank aren't income, so they aren't counted.
+
+### Bank accounts
+
+- **Connect** US and Canadian banks and cards through SimpleFIN Bridge (read-only; a setup token is pasted once), or **import** a CSV, OFX or QFX statement from any bank. Importing the same statement twice adds nothing twice.
+- **Each payment is counted once.** These are recognized and left out of the totals:
+  - payouts from Square, Stripe or PayPal (their payments are already counted, gross, with fees apart)
+  - money moving between your own accounts
+  - paying off a credit card (its purchases are the expenses)
+  - deposits you already recorded by hand
+- **Projects mark themselves paid:** a deposit for exactly what a project owes is matched to it.
+- **Business only, or mixed:** on a business-only account everything else counts. On a mixed account, transactions wait in Finance → To Review, where one tap sorts them as business, personal or a transfer. Atelier remembers the merchant for next time.
 
 ### Mail
 
@@ -193,7 +208,7 @@ The app writes a small snapshot to its App Group and the widget reads it, so the
 - **SwiftUI and SwiftData** on iOS 26, built with Xcode 27.
 - **WidgetKit with App Intents** for the configurable widget and the tappable calendar days.
 - **EventKit** for due-date events and today's schedule, **BackgroundTasks** for refreshes, and local notifications for deadlines, overdue work, paid invoices, a daily summary and new mail.
-- **Square's REST API** for customers, catalog, orders, invoices and payments, with OAuth (PKCE) sign-in, and **PayPal's Transaction Search** for payments. Besides those, the app only talks to GitHub (for feedback), Apple Maps (address suggestions), the European Central Bank's rates through frankfurter.dev (when you ask for a rate) and, when a store-bought key is activated, the store's license check.
+- **Square's REST API** for customers, catalog, orders, invoices and payments, with OAuth (PKCE) sign-in, **PayPal's Transaction Search** and **Stripe's balance transactions** for payments, and **SimpleFIN** for bank accounts. Besides those, the app only talks to GitHub (for feedback), Apple Maps (address suggestions), the European Central Bank's rates through frankfurter.dev (when you ask for a rate) and, when a store-bought key is activated, the store's license check.
 - **App Intents** for Shortcuts and Siri, and a **share extension** that hands items to the app through the App Group.
 - **iPhone and iPad**, with the iPad (and Mac) layout in a centered column; a **Mac Catalyst** build runs locally.
 - **os.Logger** with private fields marked, so logs never show client names or amounts.
@@ -238,10 +253,11 @@ Atelier has a built-in end-to-end self-test, 261 checks, run in the Simulator, p
 - Square sign-in: the PKCE challenge, the sign-in link and checking Square's reply
 - mail: pictures sent inside the message and shown where the sender put them, and the Outlook sign-in strings
 - time tracking, billing hours, retainers, and PayPal payments (against a fake PayPal API)
+- money from anywhere: bank statements (CSV, OFX), SimpleFIN and Stripe against fake servers, and the matching that keeps payouts, transfers, card payments and payments already recorded from being counted twice
 - finance: recurring transactions, totals, aging, the forecast, unusual expenses, the health score, tax estimates, CSV and PDF export and custom ranges
 - licenses: signed keys accepted, altered or foreign keys refused, and online activation against a fake store
 
-Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, feedback against a small fake GitHub API, license activation against a fake store and PayPal against a fake PayPal API, so tests never post real issues or touch real money.
+Mail (sending, attachments, archiving, drafts, flags and delete) runs against a small fake IMAP/SMTP server written in Python, feedback against a small fake GitHub API, license activation against a fake store, and PayPal, Stripe and bank feeds against fake APIs, so tests never post real issues or touch real money.
 
 A second copy of the app, **Atelier 2**, is installed next to the real one for testing. It's a separate app with no access to the real data, and it starts like a fresh install every time it's opened, so the first-launch welcome, the trial and an empty workspace can be tried again and again. Its Settings can end the trial, jump to its last day or start it again, to see each stage. An optional live Square check is read-only and verifies that re-syncing never duplicates anything.
 
