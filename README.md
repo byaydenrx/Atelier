@@ -82,7 +82,20 @@ Each client has one profile with the details that matter once: full name, email,
 - Invoices created in Square itself after setup also become projects automatically.
 - Re-syncing is idempotent: payments, invoices and clients are matched by their Square IDs, so nothing is duplicated.
 
-**Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. On the first-launch welcome, "How do you get paid?" offers Square, Other (a bank, Stripe or PayPal) and Manual; Continue opens the sign-in and moves on once you're connected.
+**Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. On the first-launch welcome, "How do you get paid?" offers Square or Manual; with Square, Continue opens the sign-in and moves on once you're connected.
+
+### Invoices without Square
+
+Without Square, Atelier makes the invoice itself: a PDF with your business details and how clients pay you, emailed from your own mail account or shared. Mark it paid when the money arrives, and its project's balance follows.
+
+### Calendar
+
+- **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
+- **Today's events** from the calendars you choose appear on the Dashboard. Atelier's own due-date events are left out there, so each deadline shows once.
+
+### Coming later: PayPal, Stripe and bank accounts
+
+PayPal and Stripe payments, PayPal and Stripe invoices, and bank accounts (SimpleFIN or statement files) are built and tested, with matching that counts each payment once across all of them. They're hidden for now, until each has a sign-in anyone can use. For now Atelier works with Square, or by hand.
 
 ### Invoices without Square
 
