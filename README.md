@@ -84,6 +84,10 @@ Each client has one profile with the details that matter once: full name, email,
 
 **Connecting:** sign in with Square in a pop-up browser (Square's own page, so the app never sees the password), or paste an access token. Either way the token is kept in the iOS Keychain and only sent to Square. Sign-in renews itself before the token expires. On the first-launch welcome, "How do you get paid?" offers Square, Other (a bank, Stripe or PayPal) and Manual; Continue opens the sign-in and moves on once you're connected.
 
+### Invoices without Square
+
+Whoever is connected sends the invoices: Square, PayPal (PayPal Invoicing) or Stripe (Stripe invoices), each emailing a pay button. With none connected, Atelier makes a PDF invoice on the phone, with your business details and how clients pay you, and emails it from your own mail account (or shares it). It's marked paid when the money reaches a connected bank account, or with one tap. With more than one connected, you choose who sends them; the Invoices tab asks first, and Settings → Invoices changes it.
+
 ### Calendar
 
 - **Due dates on your calendar.** Each active project's due date is an all-day event on the calendar you pick (any calendar on the phone, including Google or Outlook ones added in iOS Settings). It moves when the date changes and is removed when the project is finished or deleted.
@@ -254,6 +258,7 @@ Atelier has a built-in end-to-end self-test, 261 checks, run in the Simulator, p
 - mail: pictures sent inside the message and shown where the sender put them, and the Outlook sign-in strings
 - time tracking, billing hours, retainers, and PayPal payments (against a fake PayPal API)
 - money from anywhere: bank statements (CSV, OFX), SimpleFIN and Stripe against fake servers, and the matching that keeps payouts, transfers, card payments and payments already recorded from being counted twice
+- invoices without Square: who sends them, Atelier's PDF invoices paid from the bank, PayPal and Stripe invoices against fake APIs (nothing is ever emailed), and Stripe sign-in through a local copy of the sign-in helper
 - finance: recurring transactions, totals, aging, the forecast, unusual expenses, the health score, tax estimates, CSV and PDF export and custom ranges
 - licenses: signed keys accepted, altered or foreign keys refused, and online activation against a fake store
 
