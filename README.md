@@ -14,7 +14,7 @@ Atelier brings that together. Square stays the source of truth for clients and m
 
 ## What's in it
 
-Dashboard · Projects · Clients · Invoices · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs (the selection flows along like a drop of liquid, and the icons under it change colour), or swipe sideways on any empty space. Every row lights up the moment you tap it, then the page opens, so you see what you picked.
+Dashboard · Projects · Clients · Invoices · Contracts · Finance · Mail, with Search on the side. You can reorder or hide tabs and the widgets on the Dashboard. Hold the tab bar and slide your finger to move between tabs (the selection flows along like a drop of liquid, and the icons under it change colour), or swipe sideways on any empty space. Every row lights up the moment you tap it, then the page opens, so you see what you picked.
 
 | Tab | What it shows |
 | --- | --- |
@@ -86,7 +86,11 @@ Each client has one profile with the details that matter once: full name, email,
 
 ### Invoices without Square
 
-Without Square, Atelier makes the invoice itself: a PDF with your business details and how clients pay you, emailed from your own mail account or shared. Mark it paid when the money arrives, and its project's balance follows.
+Without Square (or by choice in Settings → Invoices), Atelier makes the invoice itself: a PDF with your business details and how clients pay you, emailed from your own mail account or shared, with a discount, tax, a deposit up front, the date of service, custom fields and terms. Mark it paid when the money arrives, and its project's balance follows.
+
+### Contracts
+
+A Contracts tab holds agreements and the templates they're made from (three to start with). Words in braces fill themselves in from the client, project, price and dates. The client signs on the iPhone with a finger, or the contract is emailed as a PDF and marked signed when it comes back; your own signature is added from Settings. "Add a Contract" on a new invoice sends it along: attached to the Square invoice as a PDF (Square's API has no contracts of its own), or with Atelier's invoice email.
 
 ### Calendar
 
